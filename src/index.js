@@ -1,14 +1,16 @@
-import dva from 'dva';
-import './index.css';
+import dva from 'dva'
+import model from './models/index'
+// import createLogger from 'redux-logger'
+import './index.css'
 
 // 1. Initialize
-const app = dva();
+const app = dva()
 
 // 2. Plugins
 // app.use({});
 
 // 3. Model
-// app.model(require('./models/example').default);
+model(app)
 
 // 4. Router
 app.router(require('./router').default);
