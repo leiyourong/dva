@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'dva'
+import Notice from '@/components/Notice'
 
 @connect(state => {
   return {
@@ -7,8 +8,16 @@ import { connect } from 'dva'
   }
 })
 export default class extends Component {
+  componentDidMount () {
+    const { dispatch } = this.props
+    dispatch({type: 'notice/fetch', payload: {id: 123} })
+  }
   render () {
-    console.log(props)
-    return <div>123</div>
+    const { receiveList = [] } = this.props
+    return <div className="notice-list">
+      {
+        receiveList.map(notice => <Notice key={notice.id} {...notice} />)
+      }
+    </div>
   }
 }
