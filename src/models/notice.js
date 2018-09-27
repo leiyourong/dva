@@ -18,5 +18,13 @@ export default {
       const res = yield call(getNotices)
       yield put({ type: 'getReceiveNotice', payload: res });
     }
+  },
+  subscriptions: {
+    setup({ dispatch, history }) {
+      console.log(history)
+      // return history.listen(({ pathname }) => {
+
+      // })
+    }
   }
 }
