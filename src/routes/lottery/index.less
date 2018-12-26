@@ -6,14 +6,53 @@
   margin: 50px;
 }
 
-.card {
-  margin: 1%;
-  width: 30%;
-  padding-bottom: 15%;
-  padding-top: 15%;
-  background: red;
+@keyframes openCard {
+  0% {
+    transform: rotateY(0deg)
+  }
+  100% {
+    transform: rotateY(180deg)
+  }
+}
+
+@keyframes closeCard {
+  0% {
+    transform: rotateY(180deg)
+  }
+  100% {
+    transform: rotateY(0deg)
+  }
+}
+
+.cardItem {
+  position: absolute;
+  width: 100%;
+  padding-bottom: 50%;
+  padding-top: 50%;
   height: 0;
   line-height: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(0deg);
+  animation: openCard 3s;
+  background: red;
+  animation-fill-mode: forwards;
+}
+
+.back {
+  transform: rotateY(180deg);
+  animation: closeCard 3s;
+  background: blue;
+  animation-fill-mode: forwards;
+}
+
+.card {
+  position: relative;
+  margin: 1%;
+  width: 30%;
   text-align: center;
   font-size: 30px;
   color: #FFF;
