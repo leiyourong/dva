@@ -1,5 +1,5 @@
 import dva from 'dva'
-import model from './models/index'
+import model from './models'
 // import createLogger from 'redux-logger'
 import './index.css'
 

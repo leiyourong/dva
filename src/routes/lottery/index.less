@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 50px;
+  font-size: 20px;
 }
 
 @keyframes openCard {
@@ -37,16 +38,12 @@
 
 .front {
   transform: rotateY(0deg);
-  animation: openCard 3s;
   background: red;
-  animation-fill-mode: forwards;
 }
 
 .back {
   transform: rotateY(180deg);
-  animation: closeCard 3s;
   background: blue;
-  animation-fill-mode: forwards;
 }
 
 .card {
@@ -54,6 +51,21 @@
   margin: 1%;
   width: 30%;
   text-align: center;
-  font-size: 30px;
   color: #FFF;
+}
+
+.open {
+  .front {
+    animation: openCard 1s;
+    animation-fill-mode: forwards;
+  }
+
+  .back {
+    animation: closeCard 1s;
+    animation-fill-mode: forwards;
+  }
+}
+
+.action {
+  text-align: center;
 }

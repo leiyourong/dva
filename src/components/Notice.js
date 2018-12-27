@@ -1,5 +1,6 @@
 import React from 'react'
 import style from './styles/Notice.less'
+import moment from 'moment'
 
 const Notice = data => {
   return (
@@ -8,7 +9,7 @@ const Notice = data => {
       <div className={style.notice_content}>{data.content}</div>
       <div className={style.notice_footer}>
         <div className={style.notice_time}>
-          {data.createAt}
+          {moment(data.createAt).format('YYYY-MM-DD hh:mm:ss')}
         </div>
         <div className={style.notice_author}>
           {data.author}
@@ -18,9 +19,5 @@ const Notice = data => {
     </div>
   )
 }
-
-// Notice.propTypes = {
-//   notice: React.PropTypes.object.isRequired
-// }
 
 export default Notice

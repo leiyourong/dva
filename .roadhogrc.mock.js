@@ -1,7 +1,7 @@
 
 export default {
   'GET /api/notices': {
-    items:[{
+    items: [{
       id: 'xxxx1',
       title: '[新文章] w3cschool新上线6门免费编程视频课 至“砥砺前行”的你',
       content: '为回馈广大用户，W3Cschool会员福利重磅升级，Ruby微课面向所有VIP会员用户免费开放啦，不要错过哦！',
@@ -14,5 +14,8 @@ export default {
       createAt: '2018-09-14T03:04:18.081Z',
       author: '王小二'
     }]
+  },
+  'GET /api/lottery': {
+    items: ['MAC AIR', 'Iphone XS', '谢谢惠顾', '100元', '拍立得', '华为平板', '松下冰箱', 'IPAD', '50000元']
   }
 }
