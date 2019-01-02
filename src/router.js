@@ -4,6 +4,7 @@ import { Menu } from 'antd'
 import ReceiveNotices from './routes/notice/ReceiveNotices'
 import Home from './routes/Home'
 import Lottery from './routes/lottery'
+import DateTime from './routes/dateTime'
 const SubMenu = Menu.SubMenu
 const MenuItem = Menu.Item
 
@@ -30,13 +31,14 @@ function RouterConfig({ history }) {
           </SubMenu>
           <SubMenu key="component" title={<span>组件</span>}>
             <MenuItem key="component-lottery"><Link to='/component/lottery'><div className='menuItem'>抽奖</div></Link></MenuItem>
-            <MenuItem key="6">Option 6</MenuItem>
+            <MenuItem key="component-dateTime"><Link to='/component/dateTime'><div className='menuItem'>粒子时间</div></Link></MenuItem>
           </SubMenu>
         </Menu>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/notice/receiveList" component={ReceiveNotices} />
           <Route path="/component/lottery" component={Lottery} />
+          <Route path="/component/dateTime" component={DateTime} />
         </Switch>
       </div>
     </Router>

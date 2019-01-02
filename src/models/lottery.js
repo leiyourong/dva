@@ -22,9 +22,7 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       if (history.location.pathname === '/component/lottery') {
-        dispatch({
-          type: 'fetch',
-        })
+        console.log('进入抽奖页')
       }
     }
   }

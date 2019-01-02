@@ -13,7 +13,7 @@ export default class Lottery extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      prizes: []
+      prizes: props.prizes || []
     }
   }
 
@@ -45,6 +45,11 @@ export default class Lottery extends Component {
     this.setState({
       prizes: shuffle(props.prizes)
     })
+  }
+
+  componentDidMount () {
+    const { dispatch } = this.props
+    dispatch({ type: 'lottery/fetch' })
   }
 
   render () {
