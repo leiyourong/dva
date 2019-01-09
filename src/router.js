@@ -5,6 +5,7 @@ import ReceiveNotices from './routes/notice/ReceiveNotices'
 import Home from './routes/Home'
 import Lottery from './routes/lottery'
 import DateTime from './routes/dateTime'
+import Unlock from './routes/unlock'
 const SubMenu = Menu.SubMenu
 const MenuItem = Menu.Item
 
@@ -32,6 +33,7 @@ function RouterConfig({ history }) {
           <SubMenu key="component" title={<span>组件</span>}>
             <MenuItem key="component-lottery"><Link to='/component/lottery'><div className='menuItem'>抽奖</div></Link></MenuItem>
             <MenuItem key="component-dateTime"><Link to='/component/dateTime'><div className='menuItem'>粒子时间</div></Link></MenuItem>
+            <MenuItem key="component-unlock"><Link to='/component/unlock'><div className='menuItem'>手势解锁</div></Link></MenuItem>
           </SubMenu>
         </Menu>
         <Switch>
@@ -39,6 +41,7 @@ function RouterConfig({ history }) {
           <Route path="/notice/receiveList" component={ReceiveNotices} />
           <Route path="/component/lottery" component={Lottery} />
           <Route path="/component/dateTime" component={DateTime} />
+          <Route path="/component/unlock" component={Unlock} />
         </Switch>
       </div>
     </Router>
