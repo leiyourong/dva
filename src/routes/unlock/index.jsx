@@ -1,7 +1,14 @@
 import { Component } from 'react'
 import style from './index.less'
+import { Button } from 'antd'
 
 export default class GestureUnlock extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      tapArr: []
+    }
+  }
   getContext() {
     this.canvas = document.getElementById('gestureUnlock')
     this.canvas.width = '300'
@@ -19,7 +26,7 @@ export default class GestureUnlock extends Component {
 
     canvas.addEventListener(tapstart, e => {
       self.isTap = true
-      self.tapArr = []
+      self.resetCanvas()
     })
     canvas.addEventListener(tapmove, e => {
       if (self.isTap && !self.isTaping) {
@@ -38,8 +45,10 @@ export default class GestureUnlock extends Component {
     const isInPath = this.ctx.isPointInPath(...offset)
     if (isInPath) {
       const num = this.getRealNum(...offset)
-      if (this.tapArr.indexOf(num) === -1) {
-        this.tapArr.push(num)
+      if (this.state.tapArr.indexOf(num) === -1) {
+        this.setState({
+          tapArr: [...this.state.tapArr, num]
+        })
       }
     }
     this.drawLine(...offset)
@@ -59,10 +68,10 @@ export default class GestureUnlock extends Component {
 
   drawLine (x, y) {
     const self = this,
-      tapArr = self.tapArr,
+      tapArr = self.state.tapArr,
       ctx = self.ctx
     if (tapArr && tapArr.length > 0) {
-      ctx.strokeStyle = 'rgb(255, 0, 0)'
+      ctx.strokeStyle = 'rgb(242, 242, 242)'
       tapArr.forEach((num, index) => {
         if (index === 0) {
           ctx.moveTo(...self.getNumPoint(num))
@@ -70,16 +79,15 @@ export default class GestureUnlock extends Component {
           ctx.lineTo(...self.getNumPoint(num))
         }
       })
-      ctx.lineTo(x, y)
+      // ctx.lineTo(x, y)
       ctx.stroke()
     }
   }
 
   renderBtn () {
     const ctx = this.ctx
-    ctx.save()
     ctx.beginPath()
-    ctx.fillStyle = 'rgb(242, 242, 242)'
+    ctx.strokeStyle = 'rgb(242, 242, 242)'
     const radius = 30, startDeg = 0, stopDeg = 2 * Math.PI
     for (let x = 0; x < 3; x++) {
       for (let y = 0; y < 3; y++) {
@@ -87,18 +95,24 @@ export default class GestureUnlock extends Component {
         ctx.arc(x * 100 + 50, y * 100 + 50, radius, startDeg, stopDeg)
       }
     }
-    ctx.fill()
+    ctx.stroke()
     ctx.closePath()
-    ctx.restore()
-    ctx.save()
-    ctx.fillStyle = 'rgb(255, 255, 255)'
+    ctx.fillStyle = 'rgb(255, 0, 0)'
     ctx.font = '30px Arial'
     for (let x = 0; x < 3; x++) {
       for (let y = 0; y < 3; y++) {
         ctx.fillText(x + y * 3 + 1, x * 100 + 42, y * 100 + 62)
       }
     }
-    ctx.restore()
+    ctx.save()
+  }
+
+  resetCanvas = () => {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    this.renderBtn()
+    this.setState({
+      tapArr: []
+    })
   }
 
   componentDidMount () {
@@ -110,6 +124,8 @@ export default class GestureUnlock extends Component {
   render () {
     return <div className={style.container}>
       <canvas id='gestureUnlock'>你的浏览器不支持Canvas</canvas>
+      <div className={style.result}>结果：{this.state.tapArr}</div>
+      <Button onClick={this.resetCanvas}>重置</Button>
     </div>
   }
 }
