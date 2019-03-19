@@ -1,20 +1,18 @@
 {
-  "private": true,
+  "name": "common",
+  "version": "1.0.0",
+  "description": "common ui component",
+  "main": "index.js",
   "scripts": {
-    "start": "roadhog server",
-    "build": "roadhog build",
-    "lint": "eslint --ext .js src test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "antd": "^3.9.1",
     "babel-plugin-import": "^1.8.0",
-    "dva": "^2.4.0",
-    "dva-loading": "^2.0.5",
     "lodash": "^4.17.11",
     "moment": "^2.23.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "redux-logger": "^3.0.6"
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "babel-plugin-dva-hmr": "^0.3.2",
@@ -24,10 +22,12 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "husky": "^0.12.0",
     "lerna": "^3.13.1",
-    "redbox-react": "^1.4.3",
-    "roadhog": "^2.0.0"
+    "redbox-react": "^1.4.3"
   },
-  "name": "dva"
+  "keywords": [
+    "common"
+  ],
+  "author": "leiyourong",
+  "license": "ISC"
 }
